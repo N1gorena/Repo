@@ -37,10 +37,36 @@ public class Test_main {
 			e.printStackTrace();
 		}
 		
-		try {
-			for(int i = 0 ; i < 128 ; i++){
-				trombone.playNote(i, 50);
-			}
+		try {//MIDDLE C MHLL
+			trombone.playNote(64, 50, 500);//E
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(60, 50, 500);//C
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(64, 50, 500);//E
+			trombone.playNote(64, 50, 500);//E
+			trombone.playNote(64, 50, 500);//E
+			
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(64, 50, 500);//E
+			trombone.playNote(67, 50, 500);//G
+			trombone.playNote(67, 50, 500);//G
+			
+			trombone.playNote(64, 50, 500);//E
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(60, 50, 500);//C
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(64, 50, 500);//E
+			trombone.playNote(64, 50, 500);//E
+			trombone.playNote(64, 50, 500);//E
+			
+			trombone.playNote(64, 50, 500);//E
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(64, 50, 500);//E
+			trombone.playNote(62, 50, 500);//D
+			trombone.playNote(60, 50, 500);//C
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
