@@ -15,6 +15,7 @@ public class Trombone {
 	private final int channel = 1;
 	private int duration = 200;
 	private Synthesizer synth;
+	private MidiChannel T_bone;
 	private int volume;
 	private final int trombone = Instruments.TROMBONE;
 	
@@ -27,39 +28,14 @@ public class Trombone {
 		synth.loadInstrument(instr[Instruments.TROMBONE]);
 		
 		MidiChannel[] channels = synth.getChannels();
-		channels[channel].programChange(instr[trombone].getPatch().getBank(),instr[trombone].getPatch().getProgram());
-		
+		this.T_bone = channels[channel];
+		this.T_bone.programChange(instr[trombone].getPatch().getBank(),instr[trombone].getPatch().getProgram());
 	}
-	
-	/*public static void main(String[] args){
-		int channel = 1;
-		int volume = 80;
-		int duration = 200;
-		
-		try{
-			Synthesizer synth = MidiSystem.getSynthesizer();
-			synth.open();
-			
-			Soundbank soundbank = synth.getDefaultSoundbank();
-			Instrument[] instr = soundbank.getInstruments();
-			synth.loadInstrument(instr[Instruments.TROMBONE]);
-			
-			MidiChannel[] channels = synth.getChannels();
-			channels[channel].programChange(instr[Instruments.TROMBONE].getPatch().getBank(),instr[Instruments.TROMBONE].getPatch().getProgram());
-			
-			channels[channel].noteOn(60, volume);
-			Thread.sleep(1000);
-			synth.close();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-	}*/
-	
+
 	public void playNote(int freq, int volumen) throws InterruptedException{
-		MidiChannel[] channels = this.synth.getChannels();
-		channels[channel].noteOn(freq, volumen);
-		Thread.sleep(duration);
+		T_bone.noteOn(freq, volumen);
+		Thread.sleep(1000);
+		T_bone.noteOff(freq, volumen);
 	}
 	
 }

@@ -28,12 +28,25 @@ public class Test_main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		Trombone trombone = null;
+		
 		try {
-			Trombone trombone = new Trombone();
+			trombone = new Trombone();
 		} catch (MidiUnavailableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			for(int i = 0 ; i < 128 ; i++){
+				trombone.playNote(i, 50);
+			}
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		
 		
 	}	
