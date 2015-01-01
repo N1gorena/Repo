@@ -1,27 +1,8 @@
 package trombone;
 
 
-import java.io.File;
-import java.io.IOException;
-
 import javax.sound.midi.MidiUnavailableException;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.Line;
-import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.LineListener;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.Mixer;
-import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import jm.music.data.*;
-import jm.JMC;
-import jm.util.*;
-import jm.constants.Pitches;
-import jm.constants.RhythmValues;
+import midiParser.MidiGate;
 
 public class Test_main {
 
@@ -37,43 +18,20 @@ public class Test_main {
 			e.printStackTrace();
 		}
 		
-		try {//MIDDLE C MHLL
-			trombone.playNote(64, 50, 500);//E
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(60, 50, 500);//C
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(64, 50, 500);//E
-			trombone.playNote(64, 50, 500);//E
-			trombone.playNote(64, 50, 500);//E
-			
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(64, 50, 500);//E
-			trombone.playNote(67, 50, 500);//G
-			trombone.playNote(67, 50, 500);//G
-			
-			trombone.playNote(64, 50, 500);//E
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(60, 50, 500);//C
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(64, 50, 500);//E
-			trombone.playNote(64, 50, 500);//E
-			trombone.playNote(64, 50, 500);//E
-			
-			trombone.playNote(64, 50, 500);//E
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(64, 50, 500);//E
-			trombone.playNote(62, 50, 500);//D
-			trombone.playNote(60, 50, 500);//C
+		int testVolume = 300;
+		int testLength = 100;
+		
+		//Length then Volume
+		Note n1 = new Note("C4", testLength, testVolume);
+		
+		try {
+			trombone.playNote(n1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		
-		
+		MidiGate parser = new MidiGate();
+		parser.parseMidiFile("saria_song.mid");
 	}	
 }

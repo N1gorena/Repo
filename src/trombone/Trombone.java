@@ -32,10 +32,15 @@ public class Trombone {
 		this.T_bone.programChange(instr[trombone].getPatch().getBank(),instr[trombone].getPatch().getProgram());
 	}
 
-	public void playNote(int freq, int volumen, int milliSeconds) throws InterruptedException{
-		T_bone.noteOn(freq, volumen);
-		Thread.sleep(milliSeconds);
-		T_bone.noteOff(freq, volumen);
+	public void playNote(Note n) throws InterruptedException{
+		//TODO play Note
+		T_bone.noteOn(n.MIDINoteNumber(), n.getVolume());
+		Thread.sleep(n.getLength());
+	}
+	
+	public void playNote(int midiNoteNumber, int volume, int length) throws InterruptedException{
+		T_bone.noteOn(midiNoteNumber, volume);
+		Thread.sleep(length);
 	}
 	
 }
