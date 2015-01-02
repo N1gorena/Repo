@@ -20,8 +20,11 @@ public class MainFrame extends JFrame {
 		this.setPreferredSize(screenDim);
 		this.lockScreen = new RoseLock("roseBackground.png");
 		this.add(lockScreen, BorderLayout.CENTER);
-		this.setSize(lockScreen.getSize());
+		Dimension hack = lockScreen.getSize();
+		hack.setSize(hack.width + 6, hack.height + 26);
+		this.setSize(hack);
 		this.setLocation( ((screenDim.width/2) - this.getWidth()/2) , ((screenDim.height/2) - this.getHeight()/2) );
+
 	}
 
 }
