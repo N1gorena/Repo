@@ -8,6 +8,7 @@ public class Note {
 	private int octave;
 	private int note;
 	private int mod;
+	private int midiNumber;
 	
 	private int volume;
 	private int length;
@@ -44,11 +45,20 @@ public class Note {
 		else{
 			this.mod = 0;
 		}
+		
+		this.midiNumber = (this.octave * 12) + this.note + this.mod;
+
+	}
+	
+	public Note(int midiNoteNumber, int length, int volume){
+		this.midiNumber = midiNoteNumber;
+		this.volume = volume;
+		this.length = length;
+		
 	}
 	
 	public int MIDINoteNumber(){
-		int noteNumber = (this.octave * 12) + this.note + this.mod;
-		return noteNumber;
+		return this.midiNumber;
 	}
 	public int getVolume(){
 		return this.volume;

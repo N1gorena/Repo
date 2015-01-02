@@ -1,7 +1,10 @@
 package trombone;
 
 
+import java.util.Vector;
+
 import javax.sound.midi.MidiUnavailableException;
+
 import midiParser.MidiGate;
 
 public class Test_main {
@@ -18,20 +21,16 @@ public class Test_main {
 			e.printStackTrace();
 		}
 		
-		int testVolume = 300;
-		int testLength = 100;
-		
-		//Length then Volume
-		Note n1 = new Note("C4", testLength, testVolume);
-		
-		try {
-			trombone.playNote(n1);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		MidiGate parser = new MidiGate();
-		parser.parseMidiFile("saria_song.mid");
+		Vector<Note> noteToPlay = parser.parseMidiFile("saria_song.mid");
+		
+		for(Note n : noteToPlay){
+			try {
+				trombone.playNote(n);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}	
 }
